@@ -5,8 +5,9 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.example.hilt_sample.data.Post
 
-class PostAdapter(private val dataSet: List<Post>): RecyclerView.Adapter<PostAdapter.ViewHolder>() {
+class PostAdapter(private var dataSet: List<Post>): RecyclerView.Adapter<PostAdapter.ViewHolder>() {
     inner class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         val created_date: TextView = view.findViewById(R.id.created_date)
         val post_message: TextView = view.findViewById(R.id.post_message)
@@ -25,5 +26,10 @@ class PostAdapter(private val dataSet: List<Post>): RecyclerView.Adapter<PostAda
 
     override fun getItemCount(): Int {
         return dataSet.size
+    }
+
+    fun setPostList(postList: List<Post>){
+        this.dataSet = postList
+        notifyDataSetChanged()
     }
 }
